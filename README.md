@@ -1,56 +1,56 @@
 Classconcat
 ===========
 
-A simple JavaScript utility for conditionally joining classNames together.
+A simple JavaScript utility for conditionally joining classConcat together.
 
 Install with [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/):
 
 npm:
 ```sh
-npm install classnames --save
+npm install classconcat --save
 ```
 
 
 Yarn (note that `yarn add` automatically saves the package to the `dependencies` in `package.json`):
 ```sh
-yarn add classnames
+yarn add classconcat
 ```
 
 
 Use with [Node.js](https://nodejs.org/en/), [Browserify](http://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
-var classNames = require('classnames');
-classNames('foo', 'bar'); // => 'foo bar'
+var classConcat = require('classconcat');
+classConcat('foo', 'bar'); // => 'foo bar'
 ```
 
-Alternatively, you can simply include `index.js` on your page with a standalone `<script>` tag and it will export a global `classNames` method, or define the module if you are using RequireJS.
+Alternatively, you can simply include `index.js` on your page with a standalone `<script>` tag and it will export a global `classConcat` method, or define the module if you are using RequireJS.
 
 ## Usage
 
-The `classNames` function takes any number of arguments which can be a string or object.
+The `classConcat` function takes any number of arguments which can be a string or object.
 The argument `'foo'` is short for `{ foo: true }`. If the value associated with a given key is falsy, that key won't be included in the output.
 
 ```js
-classNames('foo', 'bar'); // => 'foo bar'
-classNames('foo', { bar: true }); // => 'foo bar'
-classNames({ 'foo-bar': true }); // => 'foo-bar'
-classNames({ 'foo-bar': false }); // => ''
-classNames({ foo: true }, { bar: true }); // => 'foo bar'
-classNames({ foo: true, bar: true }); // => 'foo bar'
+classConcat('foo', 'bar'); // => 'foo bar'
+classConcat('foo', { bar: true }); // => 'foo bar'
+classConcat({ 'foo-bar': true }); // => 'foo-bar'
+classConcat({ 'foo-bar': false }); // => ''
+classConcat({ foo: true }, { bar: true }); // => 'foo bar'
+classConcat({ foo: true, bar: true }); // => 'foo bar'
 
 // lots of arguments of various types
-classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
+classConcat('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
 
 // other falsy values are just ignored
-classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
+classConcat(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 ```
 
 Arrays will be recursively flattened as per the rules above:
 
 ```js
 var arr = ['b', { c: true, d: false }];
-classNames('a', arr); // => 'a b c'
+classConcat('a', arr); // => 'a b c'
 ```
 
 ### Dynamic class names with ES2015
@@ -59,7 +59,7 @@ If you're in an environment that supports [computed keys](http://www.ecma-intern
 
 ```js
 let buttonType = 'primary';
-classNames({ [`btn-${buttonType}`]: true });
+classConcat({ [`btn-${buttonType}`]: true });
 ```
 
 ### Usage with React.js
@@ -83,12 +83,12 @@ var Button = React.createClass({
 You can express the conditional classes more simply as an object:
 
 ```js
-var classNames = require('classnames');
+var classConcat = require('classconcat');
 
 var Button = React.createClass({
   // ...
   render () {
-    var btnClass = classNames({
+    var btnClass = classConcat({
       btn: true,
       'btn-pressed': this.state.isPressed,
       'btn-over': !this.state.isPressed && this.state.isHovered
@@ -101,7 +101,7 @@ var Button = React.createClass({
 Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
 
 ```js
-var btnClass = classNames('btn', this.props.className, {
+var btnClass = classConcat('btn', this.props.className, {
   'btn-pressed': this.state.isPressed,
   'btn-over': !this.state.isPressed && this.state.isHovered
 });

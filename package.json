@@ -1,6 +1,6 @@
 {
   "name": "classconcat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a simple javascript utility for conditionally joining class names together",
   "main": "index.js",
   "scripts": {
