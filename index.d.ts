@@ -4,14 +4,14 @@ interface ClassDictionary {
   [id: string]: boolean | undefined | null;
 }
 
-interface ClassArray extends Array<ClassValue> {
+interface ClassArray extends Array<ClassValue> { }
 
-}
+type ClassConcatFn = (...classes: ClassValue[]) => string;
 
-interface ClassConcatFn {
-  (...classes: ClassValue[]): string;
-}
+type ClassConcatExport = ClassConcatFn & { default: ClassConcatFn };
 
-declare var classConcat: ClassConcatFn;
+declare const classConcat: ClassConcatExport;
 
-export default classConcat;
+export = classConcat;
+
+export as namespace classConcat;
