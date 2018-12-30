@@ -4,7 +4,7 @@
   "description": "a simple javascript utility for conditionally joining class names together",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/*.js"
   },
   "author": "Juni Brosas",
   "license": "ISC",
@@ -14,7 +14,7 @@
     "css",
     "classes",
     "classname",
-    "classnames",
+    "classconcat",
     "util",
     "utility"
   ],
